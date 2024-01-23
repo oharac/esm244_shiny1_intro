@@ -244,7 +244,7 @@ server <- function(input, output) {
   
   penguin_sum_table <- reactive({
     penguin_summary_df <- penguins %>%
-      filter(species == input\$penguin_species) %>%
+      filter(species == input$penguin_species) %>%
       group_by(sex) %>%
       summarize(mean_flip = mean(flipper_length_mm),
                 mean_mass = mean(body_mass_g))
@@ -274,6 +274,8 @@ server <- function(input, output) {
     
       plotOutput(outputId = "penguin_plot"), # <1>
     
+      h3('Summary table'),
+
       tableOutput(outputId = "penguin_table")
       
     ) ### end mainPanel
